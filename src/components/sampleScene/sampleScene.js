@@ -1,7 +1,14 @@
+
 import * as BABYLON from '@babylonjs/core';
 import * as GUI from '@babylonjs/gui';
 import * as MATERIALS from '@babylonjs/materials';
-import "@babylonjs/loaders/glTF";
+import "@babylonjs/loaders/";
+import backgroundImage from "../assets/shanghai-bund.jpg";
+import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
+
+
+
+
 
 //for cannonjs physics engine: 
 if (typeof window !== 'undefined') { 
@@ -15,12 +22,10 @@ if (typeof document !== 'undefined') {
 }
 
 //needed for both onSceneReader and onRender functions
-let car;
-let isSpinning = false;  
 
 const onSceneReady = scene => {
     //uncomment this to view BJS inspector
-    // scene.debugLayer.show();
+    scene.debugLayer.show();
 
     //this line must be here or canvas will throw not defined error when attaching camera control;
     const canvas = scene.getEngine().getRenderingCanvas();
@@ -35,8 +40,8 @@ const onSceneReady = scene => {
 
     //skyline background image
     const dome = new BABYLON.PhotoDome(
-        "dome",
-        "/shanghai-bund.jpg",
+        "dome",//  src/components/sampleScene/shanghai-bund.jpg
+        backgroundImage,
         {
             resolution: 32,
             size: 1000
@@ -45,51 +50,36 @@ const onSceneReady = scene => {
     );
 
 
-    // //GUI
-    // const advancedTexture = GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
-    // const panel = new GUI.StackPanel("stackPanel");
-    // panel.isVertical = false;
-    // panel.verticalAlignment = GUI.Control.VERTICAL_ALIGNMENT_BOTTOM;
-    // panel.height = "150px";
-    // advancedTexture.addControl(panel);
-    // const slider = new GUI.Slider();
-    // slider.minimum = 0;
-    // slider.maximum = 210;
-    // slider.value = 0;
-    // slider.height = "20px";
-    // slider.width = "200px";
-    // slider.color = "orange";
-    // slider.paddingRight = "20px";
-    // slider.thumbColor = "orange";
-    // slider.isHighlighted = true;
-    // slider.isThumbClamped = true;
-    // panel.addControl(slider);
-    // const button = new GUI.Button.CreateSimpleButton("spinButton", "Spin");
-    // button.width = "100px";
-    // button.height = "30px";
-    // button.color = "black";
-    // button.background = "orange";
-    // panel.addControl(button);
-    // button.onPointerClickObservable.add(function(){
-    //     isSpinning = !isSpinning;
-    //     console.log(isSpinning);
-    // })
     
-    //imports glTF into scene
-    BABYLON.SceneLoader.Append(
-        "/", 
-        "Renault_Alpine_blendswap_cc0.glb", 
-        scene, 
-        function (scene) {
-            car = scene.getMeshByID("__root__");
-            car.position.z = 200;
-            car.rotation = new BABYLON.Vector3(0, Math.PI*2, 0);
-            // slider.onValueChangedObservable.add(function(value) {
-            //     value = 200 - value;
-            //     car.position.z = value;
-            // });
-        }
-    )
+    //IMPORT USING APPEND
+    // BABYLON.SceneLoader.Append(
+    //     "../assets/", 
+    //     "Renault_Alpine_blendswap_cc0.glb", 
+    //     scene, 
+    //     null
+    // )
+
+
+    // TRYING TO IMPORT WTIH ASSET MANAGER
+    // const assetsManager = new BABYLON.AssetsManager(scene);
+    // const meshTask = assetsManager.addMeshTask("car task", "", "../assets/", "Renault_Alpine_blendswap_cc0.glb");
+    // meshTask.onSuccess = function (task) {
+    //     task.loadedMeshes[0].position = BABYLON.Vector3.Zero();
+    // }	
+    // assetsManager.load();
+
+
+    //TRYING TO LOAD FROM MEMORY
+    // async function loadFromMemory (){
+    //     const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync(car, true);
+    //     //loading from the static folder doesn't work anymore either
+    //     const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync("/Renault_Alpine_blendswap_cc0.glb", true);
+    //     const assetBlob = new Blob([assetArrayBuffer]);
+    //     const assetUrl = URL.createObjectURL(assetBlob);
+    //     await BABYLON.SceneLoader.AppendAsync(assetUrl, undefined, scene, undefined, ".glb");
+    // }
+    // loadFromMemory();
+
 
     const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 500, height: 500}, scene);
     const groundMat = new MATERIALS.GridMaterial("grid", scene);
@@ -99,12 +89,6 @@ const onSceneReady = scene => {
 
 
 function onRender (scene) {
-    const carOnRender = scene.getMeshByID("__root__");
-    if (carOnRender && isSpinning) {
-        var deltaTimeInMillis2 = scene.getEngine().getDeltaTime();
-        const rpm = 5;
-        carOnRender.rotation.y += ((rpm / 60) * Math.PI * 2 * (deltaTimeInMillis2 / 1000));
-    }
 }
 
 
