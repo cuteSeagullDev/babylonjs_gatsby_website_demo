@@ -24,7 +24,10 @@
     "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.7.1"
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
+    "prettier": "^2.7.1",
+    "url-loader": "^4.1.1"
   },
   "keywords": [
     "gatsby"

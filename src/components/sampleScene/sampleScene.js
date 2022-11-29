@@ -2,13 +2,16 @@
 import * as BABYLON from '@babylonjs/core';
 import * as GUI from '@babylonjs/gui';
 import * as MATERIALS from '@babylonjs/materials';
-import "@babylonjs/loaders/";
+import "@babylonjs/loaders/glTF";
 import backgroundImage from "../assets/shanghai-bund.jpg";
-import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
 
 
+// import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
+
+// const car = require("../assets/Renault_Alpine_blendswap_cc0.glb");
 
 
+const config = getConfig();
 
 //for cannonjs physics engine: 
 if (typeof window !== 'undefined') { 
@@ -69,11 +72,9 @@ const onSceneReady = scene => {
     // assetsManager.load();
 
 
-    //TRYING TO LOAD FROM MEMORY
+    // TRYING TO LOAD FROM MEMORY
     // async function loadFromMemory (){
     //     const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync(car, true);
-    //     //loading from the static folder doesn't work anymore either
-    //     const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync("/Renault_Alpine_blendswap_cc0.glb", true);
     //     const assetBlob = new Blob([assetArrayBuffer]);
     //     const assetUrl = URL.createObjectURL(assetBlob);
     //     await BABYLON.SceneLoader.AppendAsync(assetUrl, undefined, scene, undefined, ".glb");
