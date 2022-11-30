@@ -11,8 +11,6 @@ import backgroundImage from "../assets/shanghai-bund.jpg";
 // const car = require("../assets/Renault_Alpine_blendswap_cc0.glb");
 
 
-const config = getConfig();
-
 //for cannonjs physics engine: 
 if (typeof window !== 'undefined') { 
     window.CANNON = require('cannon');

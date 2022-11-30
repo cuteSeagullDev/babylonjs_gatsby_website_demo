@@ -15,14 +15,13 @@ exports.onCreateWebpackConfig = ({
   plugins,
   actions
 }) => {
-
   actions.setWebPackConfig({
     module: {
       rules: [
         {
           test: /\.(png|jpg|gif|env|glb|gltf|stl)$/i,
           use: {
-            loader: "file-loader",
+            loader: "url-loader",
             options: {
               limit: 8192,
             },
