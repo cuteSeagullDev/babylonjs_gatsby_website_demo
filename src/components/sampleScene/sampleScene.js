@@ -6,7 +6,7 @@ import "@babylonjs/loaders/glTF";
 import backgroundImage from "../assets/shanghai-bund.jpg";
 
 
-// import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
+import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
 
 // const car = require("../assets/Renault_Alpine_blendswap_cc0.glb");
 
@@ -34,14 +34,14 @@ const onSceneReady = scene => {
     //camera & lighting
     const camera = new BABYLON.ArcRotateCamera("camera", 0, 0, -10, new BABYLON.Vector3(0, 0, 0), scene)
     camera.setTarget(BABYLON.Vector3.Zero());
-    camera.setPosition(new BABYLON.Vector3(-7, 4, -20));
+    camera.setPosition(new BABYLON.Vector3(20, 8, -40));
     camera.attachControl(canvas, true);
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 0.7;
 
     //skyline background image
     const dome = new BABYLON.PhotoDome(
-        "dome",//  src/components/sampleScene/shanghai-bund.jpg
+        "dome",
         backgroundImage,
         {
             resolution: 32,
@@ -52,13 +52,17 @@ const onSceneReady = scene => {
 
 
     
-    //IMPORT USING APPEND
-    // BABYLON.SceneLoader.Append(
-    //     "../assets/", 
-    //     "Renault_Alpine_blendswap_cc0.glb", 
-    //     scene, 
-    //     null
-    // )
+    // IMPORT USING APPEND
+
+        // BABYLON.SceneLoader.Append(
+        //     "../assets/", 
+        //     "Renault_Alpine_blendswap_cc0.glb", 
+        //     scene, 
+        //     null
+        // )
+
+
+
 
 
     // TRYING TO IMPORT WTIH ASSET MANAGER
@@ -71,18 +75,18 @@ const onSceneReady = scene => {
 
 
     // TRYING TO LOAD FROM MEMORY
-    // async function loadFromMemory (){
-    //     const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync(car, true);
-    //     const assetBlob = new Blob([assetArrayBuffer]);
-    //     const assetUrl = URL.createObjectURL(assetBlob);
-    //     await BABYLON.SceneLoader.AppendAsync(assetUrl, undefined, scene, undefined, ".glb");
-    // }
-    // loadFromMemory();
-
+    async function loadFromMemory (){
+        const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync(car, true);
+        const assetBlob = new Blob([assetArrayBuffer]);
+        const assetUrl = URL.createObjectURL(assetBlob);
+        await BABYLON.SceneLoader.AppendAsync(assetUrl, undefined, scene, undefined, ".glb");
+    }
+    loadFromMemory();
 
     const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 500, height: 500}, scene);
     const groundMat = new MATERIALS.GridMaterial("grid", scene);
     ground.material = groundMat;
+    ground.position.y -= 1;
 
 }
 
