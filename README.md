@@ -21,6 +21,18 @@ _Have another more specific idea? You may want to check out our vibrant collecti
 
 1.  **Create a Gatsby site.**
 
+This is bootstrapped from Gatsby's "Hello World" starter. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
+(https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)
+([link to babylonJS documentation for ReactJS](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS))
+
+
+Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+
+_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS)
+
+
+original readme:
+
     Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
 
     ```shell
