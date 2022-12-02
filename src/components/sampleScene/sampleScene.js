@@ -4,11 +4,8 @@ import * as GUI from '@babylonjs/gui';
 import * as MATERIALS from '@babylonjs/materials';
 import "@babylonjs/loaders/glTF";
 import backgroundImage from "../assets/shanghai-bund.jpg";
-
-
 import car from "../assets/Renault_Alpine_blendswap_cc0.glb";
 
-// const car = require("../assets/Renault_Alpine_blendswap_cc0.glb");
 
 
 //for cannonjs physics engine: 
@@ -34,8 +31,8 @@ const onSceneReady = scene => {
     //camera & lighting
     const camera = new BABYLON.ArcRotateCamera("camera", 0, 0, -10, new BABYLON.Vector3(0, 0, 0), scene)
     camera.setTarget(BABYLON.Vector3.Zero());
-    camera.setPosition(new BABYLON.Vector3(20, 8, -40));
-    camera.attachControl(canvas, true);
+    camera.setPosition(new BABYLON.Vector3(20, 7, -40));
+    camera.attachControl(canvas, true);   /*uncomment to allow user to move camera*/
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
     light.intensity = 0.7;
 
@@ -50,39 +47,26 @@ const onSceneReady = scene => {
         scene
     );
 
-
-    
-    // IMPORT USING APPEND
-
-        // BABYLON.SceneLoader.Append(
-        //     "../assets/", 
-        //     "Renault_Alpine_blendswap_cc0.glb", 
-        //     scene, 
-        //     null
-        // )
-
-
-
-
-
-    // TRYING TO IMPORT WTIH ASSET MANAGER
-    // const assetsManager = new BABYLON.AssetsManager(scene);
-    // const meshTask = assetsManager.addMeshTask("car task", "", "../assets/", "Renault_Alpine_blendswap_cc0.glb");
-    // meshTask.onSuccess = function (task) {
-    //     task.loadedMeshes[0].position = BABYLON.Vector3.Zero();
-    // }	
-    // assetsManager.load();
-
-
-    // TRYING TO LOAD FROM MEMORY
+    // LOAD FROM MEMORY. this returns a promise.
     async function loadFromMemory (){
         const assetArrayBuffer = await BABYLON.Tools.LoadFileAsync(car, true);
         const assetBlob = new Blob([assetArrayBuffer]);
         const assetUrl = URL.createObjectURL(assetBlob);
         await BABYLON.SceneLoader.AppendAsync(assetUrl, undefined, scene, undefined, ".glb");
     }
-    loadFromMemory();
 
+    //access and transform the loaded meshes within the "".then" resolved function
+    //attached to the returned promise.  use scene debugger to check mesh name if needed
+    loadFromMemory().then(
+        ()=>{
+            const loadedCar = scene.getMeshByName("__root__");
+            loadedCar.position.x += 14;
+
+            console.log(scene.getTransformNodeByName("Renault_Alpine"));
+        }
+    );
+
+    //grid ground
     const ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 500, height: 500}, scene);
     const groundMat = new MATERIALS.GridMaterial("grid", scene);
     ground.material = groundMat;

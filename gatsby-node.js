@@ -10,18 +10,14 @@ exports.createPages = async ({ actions }) => {
 }
 
 exports.onCreateWebpackConfig = ({
-  rules,
-  loaders,
-  plugins,
+  // rules,
+  // loaders,
+  // plugins,
   actions
 }) => {
   actions.setWebpackConfig({
     module: {
       rules: [
-        {
-          test: /\.html$/,
-          use: ["html-loader"]
-        },
         {
           test: /\.(glb|gltf)$/i,
           use: {
@@ -34,7 +30,5 @@ exports.onCreateWebpackConfig = ({
       ]
     }
   })
-
-
 }
 
