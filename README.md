@@ -9,7 +9,7 @@
 </h1>
 
 
-##This is bootstrapped from Gatsby's "Hello World" starter. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
+This is bootstrapped from Gatsby's "Hello World" starter. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
 (https://www.gatsbyjs.com/docs/tutorial/part-0/#gatsby-cli)
 
 
