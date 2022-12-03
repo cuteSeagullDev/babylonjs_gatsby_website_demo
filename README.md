@@ -1,5 +1,5 @@
 #View demo via Netlify:
-([link to demo site](dashing-kheer-7ecaa3.netlify.app))
+([link to demo](https://dashing-kheer-7ecaa3.netlify.app/))
 
 ##This is bootstrapped from Gatsby's "Hello World" starter- original README below. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
 ([link to babylonJS documentation for ReactJS](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS))
