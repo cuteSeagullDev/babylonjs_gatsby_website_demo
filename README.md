@@ -1,22 +1,14 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+#View demo via Netlify:
+([link to demo site](dashing-kheer-7ecaa3.netlify.app))
+
+##This is bootstrapped from Gatsby's "Hello World" starter- original README below. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
+([link to babylonJS documentation for ReactJS](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS))
 
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS)
 
 ## 🚀 Quick start
 
-1.  **Create a Gatsby site.**
-
-This is bootstrapped from Gatsby's "Hello World" starter. It includes a single page, an HDRI from polyhaven.com, and a BabylonJS scene with a CC0 model from blendswap loaded from a glb file. The BabylonJS code is found at src/components/sampleScene/sampleScene.js,  within the onSceneReady function. Obviously more components can be created in this way, using the "SceneComponent" component. View BabylonJS documentation explaining this 
-([link to babylonJS documentation for ReactJS](https://doc.babylonjs.com/communityExtensions/Babylon.js+ExternalLibraries/BabylonJS_and_ReactJS))
+1.  **Create a Gatsby site.*
 
 
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
